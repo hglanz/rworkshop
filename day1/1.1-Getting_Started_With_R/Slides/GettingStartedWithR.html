@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Getting Started with R and RStudio</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Hunter Glanz &amp; Kelly Bodwin" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Getting Started with R and RStudio
+## Day 1
+### Hunter Glanz &amp; Kelly Bodwin
+
+---
+
+
+
+
+
+
+class: center, middle
+
+### Lots of different backgrounds here!
+
+# Why are you here? Why R? Why now?
+
+---
+
+# Why should you learn R?
+
+* R is free, R improves, R has existed for a long time
+* Students can show what they have learned to a potential employer easily
+* The support system for R is actually very good!
+  * Many free textbooks online
+  * Tons of announcements and content on Twitter
+  * [StackOverflow](https://stackoverflow.com/) for coding questions
+  
+.center[![](https://www.thezenteacher.com/wp-content/uploads/2018/11/drinking-from-the-firehose.jpeg)]
+
+---
+
+# But why should YOU learn R?
+
+* R and R Markdown will save you TONS of time. Long term thinking is key.
+
+--
+
+  * You can easily tweak your code if you need to do another analysis
+  
+--
+
+  * Remembering what drop-down menu something is in two years from now in a different program will be hard
+  
+--
+
+  * Remembering to copy-and-paste your updated plots/analysis into your word processor is a pain and error prone
+  
+--
+
+.center[*Your closest collaborator is you from six months ago, but you no longer answer emails* - Mark Holder]
+
+
+&lt;img src="BadOldCodeTweet.PNG" width="35%" style="display: block; margin: auto;" /&gt;
+---
+
+# Good Coding Habits
+
+
+* [Good coding style](https://style.tidyverse.org/) -- Use a consistent style!
+
+--
+
+* Use some form of Git
+
+--
+
+* Take advantage of R Markdown, R Shiny, and R projects where appropriate
+
+--
+
+.center[*Reproducibility is key!*]
+
+---
+
+# What this workshop is
+
+* Some of...
+
+.center[![](https://paulvanderlaken.files.wordpress.com/2017/07/tidyverse1.png)]
+
+* Plus a few others: rmarkdown, shiny, and your advanced topics
+
+---
+
+# Let's Get Started
+
+* [Installing R](https://www.r-project.org/)
+
+  * Follow the "Getting Started" directions to download and install R
+  
+--
+
+* [Installing RStudio](https://www.rstudio.com/products/rstudio/)
+
+  * Click on "RStudio Desktop" and follow the directions to download and install the **open source edition** of RStudio Desktop
+  
+---
+
+# Collecting the workshop materials
+
+* Open RStudio
+
+* In the Console pane (bottom left or just left by default) type the following and hit Enter
+
+.center[**install.packages("usethis")**]
+
+* Now, in the same Console pane, type the following and hit Enter
+
+.center[**usethis code here**]
+
+* On your desktop you should see a new folder titled "rworkshop"
+
+* Open that "rworkshop" folder and open (double-click) the "rworkshop.Rproj" file (it should have a light blue icon with an R in the middle of it)
+
+* You should see RStudio come to the front of your screen except now, in the very top right corner of RStudio, you should see that light blue icon next to **rworkshop**
+
+---
+
+# What did we just do?!
+
+* You installed Base R
+
+* You installed RStudio
+
+* You installed your first package: `usethis`
+
+* You obtained all of our workshop materials (to your Desktop) via some functionality of the `usethis` package
+
+* You opened an R project file called *rworkshop* (more on this later)
+
+---
+
+# Working with R through RStudio
+
+* R is the language
+
+--
+
+* RStudio is the IDE (integrated development environment) -- not required to work with R, but highly recommended
+
+--
+
+# Basic Ways to Use R
+
+1. In the Console Pane
+
+  * Try `2 + 2` and hit Enter
+
+--
+
+2. In an R script (.R) file
+
+  * File -&gt; New File -&gt; R Script
+  
+--
+
+  * Type `2 + 2` in your script, select/highlight it, and then hit Ctrl + Enter
+
+---
+
+# R Markdown
+
+* File -&gt; New File -&gt; R Markdown
+
+  * "Document" and "HTML" are fine for now, but you can see we have many options for output types
+  
+--
+
+* This file looks very different!
+
+  * The symbol (at the top of the pane) and file extension are different than an R script
+
+  * There appears to be header information
+  
+  * There appear to be gray and white chunks throughout the file
+
+---
+
+class: inverse
+
+# Fresh R Markdown Activity
+
+* In your new R Markdown file, do and answer the following with your neighbors:
+
+  * Save this file to your desktop as `rmarkdownactivity_lastname` with your last name inserted. You can use either the File menu or the little save icon at the top of the R Markdown file.
+  
+  * What do you think the differences are between the white chunks and the gray chunks?
+  
+  * What happens when you click the green play button on the right side of the second gray chunk from the top? What about for the last gray chunk?
+  
+  * What happens when you click the "Knit" icon at the top of the R Markdown file? Can you trace all of the things you're seeing produced back to the R Markdown file?
+  
+  * In the last gray chunk, change `echo = FALSE` to `echo = TRUE` and then click the green play button for that chunk again. What changed? Click the "Knit" icon again and observe the result. What changed?
+
+---
+
+class: inverse
+
+# Fresh R Markdown Activity "Answers"
+
+* Gray chunks contain code that can be run. White chunks contain (markdown) text. The interweaving of these two means that we can create dynamic reports seamlessly in a single location/file!
+
+--
+
+* Each gray chunk can be thought of as a mini R script file. You can highlight only portions of code in a chunk to run via *Ctrl + Enter* or you can run the whole chunk via that green play button. Results appear in-line, i.e. beneath each code chunk.
+
+--
+
+* Knitting an R Markdown file means "running" the code/markdown within and producing the corresponding output file (HTML, PDF, Word). Yours should have produced an HTML file. While the result popped up for you in a separate RStudio window, the resulting HTML file is produced in the same location as your R Markdown file (check your Desktop!).
+
+--
+
+* There are vast number of features and customizability options to take advantage for both the R Markdown and the resulting files (e.g. `echo`)!
+
+
+
+---
+
+# RStudio Bells and Whistles
+
+.center[![](https://media.giphy.com/media/4cUCFvwICarHq/giphy.gif)]
+
+--
+
+* Just ask!
+
+---
+
+class: inverse
+
+# Some Toy Work with `iris`
+
+* Canonical `iris` dataset 
+
+
+```
+## # A tibble: 6 x 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+## 1          5.1         3.5          1.4         0.2 setosa 
+## 2          4.9         3            1.4         0.2 setosa 
+## 3          4.7         3.2          1.3         0.2 setosa 
+## 4          4.6         3.1          1.5         0.2 setosa 
+## 5          5           3.6          1.4         0.2 setosa 
+## 6          5.4         3.9          1.7         0.4 setosa
+```
+
+--
+
+* Close out of your current RStudio session (*X* in the top right)
+
+* Open up the *rworkshop* folder on your desktop
+
+* Navigate to the *day1* subfolder
+
+* Open up the *toyworkiris.Rmd* file (this should open a new RStudio session)
+
+* Read and work your way through this file
+
+---
+
+# `iris` Work Follow-Up
+
+* Amongst other things, you just made some changes to the `iris` dataset and saved them in `myiris`
+
+* Suppose you wanted to save these changes as a new dataset that you could share with others, in a new file called `myiris.csv`
+
+* You could accomplish this with the following code (do not run this code):
+
+.center[`write_csv(myiris, "myiris.csv")`]
+
+--
+
+* Where will this file get created on your machine? How could we change where the file gets created?
+
+--
+
+* Let's keep things as reproducible as possible!
+
+.center[**R projects**]
+
+---
+
+# R Projects
+
+* Projects for your R work!
+
+* Fantastic organizational tool
+
+--
+
+* Close out of all of your current RStudio sessions
+
+* Open up the `rworkshop` folder on your desktop
+
+* Open the `rworkshop` R project file (light blue square icon with `R` in the middle)
+
+* Locate your working directory path at the top of the Console pane
+
+--
+
+&lt;img src="OprahMeme-getwd.jpg" width="40%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse
+
+# Fresh R Project Activity
+
+* Create a new folder on your Desktop called `rworkshop_myproject`
+
+* In RStudio, File -&gt; New Project
+
+  * Select `Existing Directory`
+  
+  * Browse to your Desktop and select your newly created `rworkshop_myproject` folder
+  
+  * Click `Create Project`
+  
+* Start a new R Markdown file
+
+  * Do a few things of your choosing, possibly with the `iris` dataset if you like
+  
+  * Knit the file
+  
+* Navigate to your `rworkshop_myproject` folder and confirm that your new R Markdown and resulting HTML file are within along with the project file itself
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+- (We need to consistent-ify the practice Rmds, of course)
+- Rmd file in a FOLDER on Desktop, not straight to it.
+- write_csv before read_csv?  A little odd.
+- Make it clear that toyworkiris is just to show what Rmd is capable of - they  don't need to be paying attention to the code yet, as that's in module 2.
+- Take the time to teach these in module 1:
+    * assignment! When do things print versus saving?
+    * (very) basic object types
+    * $ and [] very very basic
+    * What is a function/arguments?
+    * doing stuff to vectors 
+        -  summaries like mean()
+        -  "do to each elt" like `+` or `sqrt()`
+    * The pipe?  (I think we should do this in Module 2 only.)
+    * Some history of R, tidyverse
