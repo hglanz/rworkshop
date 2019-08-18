@@ -1,5 +1,5 @@
 ---
-title: "Presentation Ninja"
+title: "Presentation Ninja blah blah"
 subtitle: "\u2694 <br/>with xaringan and xaringanthemer"  
 author: "Yihui Xie"
 date: '`r Sys.Date()`'
