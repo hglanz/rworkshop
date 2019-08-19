@@ -13,7 +13,9 @@ Fisher's iris dataset is a multivariate dataset introduced bby the British stati
 
 The vas majority of our workshop will involve what's known as the Tidyverse which represents, among other things, a collection of R packages that work very nicely together on data.
 
-If you have not installed these packages, then type `install.packages("tidyverse")` in to the Console pane and hit Enter. Much, if not all, of the code below may be foreign to you. That's ok! By the end of the workshop you'll be familiar with all of these things!
+If you have not installed these packages, then type `install.packages("tidyverse")` in to the Console pane and hit Enter. Much, if not all, of the code below may be foreign to you. That's ok! By the end of the workshop you'll be familiar with all of these things! 
+
+So, try not to focus too much on the code itself and instead try to get a sense of how R Markdown files can work and what this dataset is like.
 
 ## Summarizing
 
@@ -41,7 +43,7 @@ Let's start by creating a copy of the `iris` dataset to make changes to.
 myiris <- iris
 ```
 
-Now let's create some new variables. As with most programming languages there are many ways to do any given thing. The code below is just one way to create variables using the Tidyverse. There are other ways to create variables, some that don't involve using any outside packages like the Tidyverse.
+Now let's create some new variables. As with most programming languages there are many ways to do any given thing. The code below is just one way to create variables using the Tidyverse. There are other ways to create variables as well, some that don't involve using any outside packages like the Tidyverse.
 
 ```{r}
 myiris <- myiris %>%
@@ -62,3 +64,7 @@ myiris %>%
 ```
 
 What do you think? Try plotting some other pairs of variables in the dataset. What pair of variables seems to separate the species best?
+
+```{r}
+write_csv(myiris, "myiris.csv")
+```

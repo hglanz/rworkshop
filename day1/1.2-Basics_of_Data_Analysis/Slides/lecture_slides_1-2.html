@@ -398,10 +398,13 @@ mtcars %&gt;%
 # Many variables?  Many summary statistics?
 ## No problemo
 
-&lt;code class ='r hljs remark-code'&gt;iris %&gt;%&lt;br&gt;  summarize(&lt;span style='background-color:#ffff7f'&gt;vars&lt;/span&gt;(&lt;span style='color:cornflowerblue'&gt;Petal.Length&lt;/span&gt;, &lt;span style='color:cornflowerblue'&gt;Petal.Width&lt;/span&gt;),&lt;br&gt;            &lt;span style='background-color:#ffff7f'&gt;funs&lt;/span&gt;(&lt;span style='color:teal'&gt;mean&lt;/span&gt;, &lt;span style='color:teal'&gt;median&lt;/span&gt;))&lt;/code&gt; 
+&lt;code class ='r hljs remark-code'&gt;iris %&gt;%&lt;br&gt;  summarize&lt;span style='background-color:#ffff7f'&gt;_at&lt;/span&gt;(&lt;span style='color:darkred'&gt;vars&lt;/span&gt;(&lt;span style='color:cornflowerblue'&gt;Petal.Length&lt;/span&gt;, &lt;span style='color:cornflowerblue'&gt;Petal.Width&lt;/span&gt;),&lt;br&gt;            &lt;span style='color:darkred'&gt;funs&lt;/span&gt;(&lt;span style='color:teal'&gt;mean&lt;/span&gt;, &lt;span style='color:teal'&gt;median&lt;/span&gt;))&lt;/code&gt; 
 
 ```
-## Error: Column `vars(Petal.Length, Petal.Width)` must be length 1 (a summary value), not 2
+##   Petal.Length_mean Petal.Width_mean Petal.Length_median
+## 1             3.758         1.199333                4.35
+##   Petal.Width_median
+## 1                1.3
 ```
 
 
@@ -939,6 +942,196 @@ class: center, middle, invert
 # Visualizing data
 
 ---
+
+class: center, middle
+
+# The big idea: "Grammar of graphics"
+## A visualization is formed by mapping *variables* to *plot aesthetics*
+## The **geometry** of the plot determines the display style
+
+---
+
+![](lecture_slides_1-2_files/figure-html/unnamed-chunk-30-1.png)&lt;!-- --&gt;
+
+The **sepal length** is mapped to the **x-axis**, the **sepal width** is mapped to the **y-axis**, and the **Species** is mapped to the **color**.
+
+---
+
+# Using ggplot2
+
+**Step One:** Specify the dataset
+
+&lt;code class ='r hljs remark-code'&gt;ggplot(&lt;span style='background-color:#ffff7f'&gt;data = iris&lt;/span&gt;)&lt;/code&gt;
+
+
+**Step One:** Specify the aesthetic
+
+&lt;code class ='r hljs remark-code'&gt;ggplot(iris, &lt;span style='background-color:#ffff7f'&gt;aes(y = Sepal.Length, x = Species))&lt;/span&gt;&lt;/code&gt;
+
+**Step One:** Choose the type of plot
+
+&lt;code class ='r hljs remark-code'&gt;ggplot(iris, aes(y = Sepal.Length, x = Species))&lt;br&gt;&lt;/code&gt; &lt;code class ='r hljs remark-code'&gt;    + geom_&lt;span style='background-color:#ffff7f'&gt;boxplot&lt;/span&gt;()&lt;/code&gt;
+
+
+*(near-infinite customization!)*
+
+---
+# Quick Quiz
+
+Without running the code, what seems wrong in each of these three code chunks?
+
+
+
+```r
+ggplot(y = Sepal.Length, x = Sepal.Width)
+    + geom_point()
+```
+
+
+
+
+
+```r
+ggplot(iris, aes(y = Sepal.Length, x = Sepal.Width))
+    + geom_bar()
+```
+
+
+
+
+
+
+```r
+ggplot(iris, aes(y = Sepal.Length, x = Sepal.Width)
+    + geom_point()
+```
+
+
+
+---
+# The Main Geometries
+
+`geom_histogram`: requires `x`
+
+`geom_bar`: requires `x`
+
+(`geom_col`: requires `x` and `y`)
+
+`geom_boxplot`: requires `y` and `x` or `group`
+
+`geom_point`: requires `x` and `y`
+
+(`geom_line`: requires `x` and `y` and special data)
+
+---
+
+# Common "extra stuff"
+
+* `fill` is the **filler color**
+
+Q: What is the difference between the following?
+
+&lt;code class ='r hljs remark-code'&gt;ggplot(iris, aes(x = Petal.Length, &lt;span style='background-color:#ffff7f'&gt;fill = Species&lt;/span&gt;)) + &lt;br&gt;  geom_histogram()&lt;/code&gt;
+
+&lt;code class ='r hljs remark-code'&gt;ggplot(iris, aes(x = Petal.Length)) + &lt;br&gt;  geom_histogram(&lt;span style='background-color:#ffff7f'&gt;fill = "cornflowerblue"&lt;/span&gt;)&lt;/code&gt;
+
+---
+
+A:  Options in the **aesthetic** related to **variables**.  Other options are "global".
+
+
+&lt;code class ='r hljs remark-code'&gt;ggplot(iris, aes(x = Petal.Length, &lt;span style='background-color:#ffff7f'&gt;fill = Species&lt;/span&gt;)) + &lt;br&gt;  geom_histogram()&lt;/code&gt; 
+
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+ ![](lecture_slides_1-2_files/figure-html/unnamed-chunk-39-1.png)&lt;!-- --&gt;
+
+---
+A:  Options in the **aesthetic** related to **variables**.  Other options are "global".
+
+&lt;code class ='r hljs remark-code'&gt;ggplot(iris, aes(x = Petal.Length)) + &lt;br&gt;  geom_histogram(&lt;span style='background-color:#ffff7f'&gt;fill = &lt;/span&gt;"cornflowerblue")&lt;/code&gt; 
+
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+ ![](lecture_slides_1-2_files/figure-html/unnamed-chunk-40-1.png)&lt;!-- --&gt;
+
+---
+
+# Common "extra stuff"
+
+* `fill` is the **filler color**
+
+* `+ ggtitle("My title")` to add a title
+
+* `+ xlab("axis label")` or `+ ylab("axis label")` to label axes
+
+* `+ theme_*` for various visual options
+
+* ... and SO many more `geom_*` plot types!
+
+[https://www.r-graph-gallery.com/](https://www.r-graph-gallery.com/)
+
+---
+
+# ggplots are objects 
+
+You can name them and change them later
+
+
+
+```r
+p &lt;- ggplot(iris, aes(x = Sepal.Length))
+
+p + geom_histogram() + ggtitle("Histogram")
+```
+
+![](lecture_slides_1-2_files/figure-html/unnamed-chunk-41-1.png)&lt;!-- --&gt;
+
+---
+
+# Saving your plot
+
+
+
+```r
+ggsave("my_filename.png")
+```
+
+
+
+This will save whatever you most recently plotted!
+
+---
+
+# The pipe is your friend
+
+Want a histogram of just *setosa* iris sepal lengths?  Pipe it through `filter()` first!
+
+
+
+```r
+iris %&gt;%
+  filter(Species == "setosa") %&gt;%
+  ggplot(aes(x = Sepal.Length)) +
+    geom_histogram()
+```
+
+![](lecture_slides_1-2_files/figure-html/unnamed-chunk-43-1.png)&lt;!-- --&gt;
+
+---
+
+class: center, middle, invert
+
+# YOUR TURN
+
+---
+class: center, middle
+
+## For each of the four main plot types (histogram, barplot, boxplot, scatterplot), make an interesting visualization from your cereal dataset.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

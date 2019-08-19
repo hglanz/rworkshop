@@ -13,10 +13,6 @@ library(tidyverse)
 
 ## The Data
 
-```{r read_data, directions = TRUE}
-#### Write code to read in the dataset here
-```
-
 ```{r, solution = TRUE, echo = FALSE}
 cereals <- read_csv("/Users/kbodwin/Dropbox/rworkshop-dev/data/cereals.csv")
 ```
@@ -26,12 +22,6 @@ cereals <- read_csv("/data/cereals.csv")
 ```
 
 Documentation for dataset: https://www.kaggle.com/crawford/80-cereals/version/2
-
-```{r check_data, directions = TRUE, eval = FALSE}
-#### Edit this code to examine your dataset
-str()
-summary()
-```
 
 ```{r, solution = TRUE}
 #### Edit this code to examine your dataset
@@ -45,30 +35,12 @@ summary(cereals)
 
 ## Data Cleaning and Transformation
 
-
-```{r summarize, directions = TRUE}
-#### Write code to show the mean and median calories and sugar content per serving of all cereals
-```
-
 ```{r, solution = TRUE}
 
 cereals %>%
   summarize_at(vars(calories, sugars),
             funs(mean, median))
 
-```
-
-```{r mutate, directions = TRUE}
-#### Write code to create the variable "cal_per_cup" here
-```
-
-```{r filter_select, directions = TRUE}
-#### Write code to include only Kellogg brand cereals, and only relevant columns
-```
-
-
-```{r arrange, directions = TRUE}
-#### Write code to sort the dataset by calories per cup
 ```
 
 

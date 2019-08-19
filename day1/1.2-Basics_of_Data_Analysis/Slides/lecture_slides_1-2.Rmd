@@ -568,8 +568,189 @@ class: center, middle, invert
 
 ---
 
-# The ggplot framework
+class: center, middle
 
+# The big idea: "Grammar of graphics"
+## A visualization is formed by mapping *variables* to *plot aesthetics*
+## The **geometry** of the plot determines the display style
+
+---
+
+```{r, echo = FALSE}
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point()
+
+```
+
+The **sepal length** is mapped to the **x-axis**, the **sepal width** is mapped to the **y-axis**, and the **Species** is mapped to the **color**.
+
+---
+
+# Using ggplot2
+
+**Step One:** Specify the dataset
+
+```{r, echo = FALSE}
+demo_code('ggplot(data = iris)', eval = FALSE) %>% hlt_fixed("data = iris")
+```
+
+
+**Step One:** Specify the aesthetic
+
+```{r, echo = FALSE}
+demo_code('ggplot(iris, aes(y = Sepal.Length, x = Species))', eval = FALSE) %>% hlt_regexp("aes(.*)")
+```
+
+**Step One:** Choose the type of plot
+
+```{r, echo = FALSE}
+demo_code('
+ggplot(iris, aes(y = Sepal.Length, x = Species))
+    + geom_boxplot()', eval = FALSE) %>% hlt_regexp("boxplot")
+```
+
+
+*(near-infinite customization!)*
+
+---
+# Quick Quiz
+
+Without running the code, what seems wrong in each of these three code chunks?
+
+```{r, eval = FALSE}
+ggplot(y = Sepal.Length, x = Sepal.Width)
+    + geom_point()
+```
+
+```{r, eval = FALSE}
+ggplot(iris, aes(y = Sepal.Length, x = Sepal.Width))
+    + geom_bar()
+```
+
+
+```{r, eval = FALSE}
+ggplot(iris, aes(y = Sepal.Length, x = Sepal.Width)
+    + geom_point()
+```
+
+---
+# The Main Geometries
+
+`geom_histogram`: requires `x`
+
+`geom_bar`: requires `x`
+
+(`geom_col`: requires `x` and `y`)
+
+`geom_boxplot`: requires `y` and `x` or `group`
+
+`geom_point`: requires `x` and `y`
+
+(`geom_line`: requires `x` and `y` and special data)
+
+---
+
+# Common "extra stuff"
+
+* `fill` is the **filler color**
+
+Q: What is the difference between the following?
+
+```{r, echo = FALSE}
+demo_code('
+ggplot(iris, aes(x = Petal.Length, fill = Species)) + 
+  geom_histogram()',
+eval = FALSE) %>% hlt_regexp("fill = [:alpha:]*")
+```
+
+```{r, echo = FALSE}
+demo_code('
+ggplot(iris, aes(x = Petal.Length)) + 
+  geom_histogram(fill = "cornflowerblue")',
+eval = FALSE) %>% hlt_regexp('fill = "[:alpha:]*"')
+```
+
+---
+
+A:  Options in the **aesthetic** related to **variables**.  Other options are "global".
+
+
+```{r, echo = FALSE, message = FALSE}
+demo_code('
+ggplot(iris, aes(x = Petal.Length, fill = Species)) + 
+  geom_histogram()') %>% hlt_regexp("fill = [:alpha:]*")
+```
+
+---
+A:  Options in the **aesthetic** related to **variables**.  Other options are "global".
+
+```{r, echo = FALSE, message = FALSE}
+demo_code('
+ggplot(iris, aes(x = Petal.Length)) + 
+  geom_histogram(fill = "cornflowerblue")') %>% hlt_regexp("fill = [:alpha:]*")
+```
+
+---
+
+# Common "extra stuff"
+
+* `fill` is the **filler color**
+
+* `+ ggtitle("My title")` to add a title
+
+* `+ xlab("axis label")` or `+ ylab("axis label")` to label axes
+
+* `+ theme_*` for various visual options
+
+* ... and SO many more `geom_*` plot types!
+
+[https://www.r-graph-gallery.com/](https://www.r-graph-gallery.com/)
+
+---
+
+# ggplots are objects 
+
+You can name them and change them later
+
+```{r, message = FALSE, fig.height=4}
+p <- ggplot(iris, aes(x = Sepal.Length))
+
+p + geom_histogram() + ggtitle("Histogram")
+```
+
+---
+
+# Saving your plot
+
+```{r, eval = FALSE}
+ggsave("my_filename.png")
+```
+
+This will save whatever you most recently plotted!
+
+---
+
+# The pipe is your friend
+
+Want a histogram of just *setosa* iris sepal lengths?  Pipe it through `filter()` first!
+
+```{r, message = FALSE, fig.height=4}
+iris %>%
+  filter(Species == "setosa") %>%
+  ggplot(aes(x = Sepal.Length)) +
+    geom_histogram()
+```
+
+---
+
+class: center, middle, invert
+
+# YOUR TURN
+
+---
+class: center, middle
+
+## For each of the four main plot types (histogram, barplot, boxplot, scatterplot), make an interesting visualization from your cereal dataset.
 
 
 
