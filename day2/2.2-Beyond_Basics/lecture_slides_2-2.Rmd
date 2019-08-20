@@ -1,0 +1,36 @@
+---
+title: "Beyond the Basics"
+subtitle: "Day 2"  
+author: "Hunter Glanz & Kelly Bodwin"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(demoR)
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+solarized_light()
+```
+---
+
+background-image: url(https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png)
+
+---
+# Factors
+
+# Strings
+
+# Dates
+
+---

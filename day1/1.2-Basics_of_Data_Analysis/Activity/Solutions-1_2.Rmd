@@ -51,7 +51,10 @@ cereals_2 <- cereals %>%
   ) %>%
   select(name, mfr, cal_per_cup) %>%
   filter(mfr == "Kellogg") %>%
-  arrange(cal_per_cup)
+  arrange(desc(cal_per_cup))
+
+
+
 ```
 
 [CHECKPOINT: Knit your document!]
@@ -96,3 +99,19 @@ ggplot(cereals, aes(x = sugars, y = calories)) +
 ## Conclusion
 
 What did you learn about cereals?  Write a few sentences summarizing your findings, knit your document, and admire your handiwork!
+
+
+```{r}
+cereals %>%
+  group_by(mfr, type) %>%
+  summarize_at(vars(calories, sugars), funs(mean, median))
+```
+
+```{r}
+cereals %>%
+  select(name, protein, fat, fiber) %>%
+  gather(key = "Nutrients", value = "Amount", -name) %>%
+  ggplot(aes(x = Nutrients, y = Amount)) + geom_boxplot()
+```
+
+
