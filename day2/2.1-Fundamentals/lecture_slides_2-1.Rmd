@@ -309,6 +309,6 @@ colleges_new %>%
 
 4. How does the size of the school relate to the cost, correcting for public versus private status?
 
----
+*Knit your document!*
 
-# Knit your document!
+## email your favorite plot to `kbodwin@calpoly.edu` with the subject line "R Workshop"
