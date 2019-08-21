@@ -404,7 +404,7 @@ for (i in sequencei) {
 library(purrr)
 myiris &lt;- myiris %&gt;%
   select(-Species) %&gt;%
-  map(standardize)
+  map(standardize) %&gt;%
 ```
 
 * `map(.x, .f, ...)`

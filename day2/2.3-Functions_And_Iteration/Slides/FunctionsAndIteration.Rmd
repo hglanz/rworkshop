@@ -363,7 +363,7 @@ for (i in sequencei) {
 library(purrr)
 myiris <- myiris %>%
   select(-Species) %>%
-  map(standardize)
+  map(standardize) %>%
 ```
 
 * `map(.x, .f, ...)`
