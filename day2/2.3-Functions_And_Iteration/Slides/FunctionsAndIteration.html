@@ -43,85 +43,6 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# A simple function
-
-
-```r
-add_two &lt;- function(x) {
-  
-  x + 2
-  
-}
-
-add_two(5)
-```
-
-```
-## [1] 7
-```
-
-`x` is a placeholder!
-
----
-# Word of Caution 1
-
-Function names are chosen by the writer!
-
-
-```r
-add_three &lt;- function(x) {
-  
-  x + 7
-  
-}
-
-add_three(5)
-```
-
-What will this give us?
-
----
-
----
-# Word of Caution
-
-Unless you are very very experienced, do **not** reference outside objects!
-
-
-```r
-add_two &lt;- function() {
-  
-  x + 2
-  
-}
-
-add_two()
-```
-
-```
-## Error in add_two(): object 'x' not found
-```
-
-```r
-x &lt;- 10
-
-add_two()
-```
-
-```
-## [1] 12
-```
-
-
----
-
-# Your turn
-
-Write a function called `times_seven()` which takes a single argument and multiplies by 7.
-
-
----
-
 # When should you write a function?
 
 * Consider writing a function whenever you've copied and pasted a block of code more than twice
@@ -404,7 +325,7 @@ for (i in sequencei) {
 library(purrr)
 myiris &lt;- myiris %&gt;%
   select(-Species) %&gt;%
-  map(standardize)
+  map(standardize) %&gt;%
 ```
 
 * `map(.x, .f, ...)`
